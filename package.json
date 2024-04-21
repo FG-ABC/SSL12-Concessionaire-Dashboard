@@ -42,6 +42,7 @@
     "@alpinejs/persist": "^3.12.0",
     "alpinejs": "^3.10.3",
     "apexcharts": "^3.36.3",
+    "firebase": "^10.11.0",
     "flatpickr": "^4.6.13",
     "jsvectormap": "^1.5.1"
   }

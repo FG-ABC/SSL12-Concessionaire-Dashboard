@@ -19,3 +19,8 @@
 ### Commit 2: Cleanup
 
 * Remove most parts of page I won't use
+
+### Commit 3: Get Data
+
+* Added get data functionality to button. 
+* Get data button retrieves data from firebase and displays it in graph
