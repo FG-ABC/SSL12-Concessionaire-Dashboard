@@ -66,7 +66,7 @@
               <include src="./partials/chart-01.html" />
               <!-- ====== Chart One End -->
 
-              <!-- Time and date -->
+              <!-- Time and date 1 -->
               <div
               class="col-span-12 xl:col-span-4 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
             >
@@ -74,10 +74,12 @@
                 class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
               >
                 <h3 class="font-medium text-black dark:text-white">
-                  Data Query Selector
+                  Pressure Sensor Data Selector
                 </h3>
               </div>
               <div class="flex flex-col gap-5.5 p-6.5">
+
+                <!-- Start Date -->
                 <div>
                   <label
                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -86,8 +88,9 @@
                   </label>
                   <div class="relative">
                     <input
+                      id="WSN1a1"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      placeholder="mm/dd/yyyy"
+                      placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
                     />
 
@@ -109,17 +112,18 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- End Date -->
                 <div>
                   <label
                     class="mb-3 block text-sm font-medium text-black dark:text-white"
                   >
-                    Select date
+                    End date
                   </label>
                   <div class="relative">
                     <input
+                      id="WSN1a2"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      placeholder="mm/dd/yyyy"
+                      placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
                     />
 
@@ -141,7 +145,7 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- Get Button -->
                 <button
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
@@ -149,7 +153,7 @@
                     >
                     Get Data
                 </button>
-
+                <!-- Live Button -->
                 <a
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
@@ -159,13 +163,13 @@
 
               </div>
               </div>
-              <!-- Time and date -->
+              <!-- Time and date 1 -->
 
-              <!-- ====== Chart One Start -->
-              <include src="./partials/chart-01.html" />
-              <!-- ====== Chart One End -->
+              <!-- ====== Chart Two Start -->
+              <include src="./partials/chart-02.html" />
+              <!-- ====== Chart Two End -->
 
-              <!-- Time and date -->
+              <!-- Time and date 2 -->
               <div
               class="col-span-12 xl:col-span-4 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
             >
@@ -173,10 +177,12 @@
                 class="border-b border-stroke px-6.5 py-4 dark:border-strokedark"
               >
                 <h3 class="font-medium text-black dark:text-white">
-                  Data Query Selector
+                  Water Level Sensor Data Selector
                 </h3>
               </div>
               <div class="flex flex-col gap-5.5 p-6.5">
+
+                <!-- Start Date -->
                 <div>
                   <label
                     class="mb-3 block text-sm font-medium text-black dark:text-white"
@@ -185,8 +191,9 @@
                   </label>
                   <div class="relative">
                     <input
+                      id="WSN1b1"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      placeholder="mm/dd/yyyy"
+                      placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
                     />
 
@@ -208,17 +215,18 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- End Date -->
                 <div>
                   <label
                     class="mb-3 block text-sm font-medium text-black dark:text-white"
                   >
-                    Select date
+                    End date
                   </label>
                   <div class="relative">
                     <input
+                      id="WSN1b2"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                      placeholder="mm/dd/yyyy"
+                      placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
                     />
 
@@ -240,15 +248,15 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- Get Button -->
                 <button
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    id="getDataButton01"
+                    id="getDataButton02"
                     >
                     Get Data
                 </button>
-
+                <!-- Live Button -->
                 <a
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
@@ -258,8 +266,7 @@
 
               </div>
               </div>
-              <!-- Time and date -->
-
+              <!-- Time and date 2 -->
 
             </div>
           </div>

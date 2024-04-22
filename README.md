@@ -1,4 +1,12 @@
-#CoE199 WebApp GUI
+# CoE199 WebApp GUI
+
+## Links
+* 
+* [Firebase](https://console.firebase.google.com/project/coe199-7c644/firestore/databases/-default-/usage/prev-24h)
+* [Alpine.js](https://alpinejs.dev/directives/show)
+* [Apex Charts](https://apexcharts.com/docs/options/xaxis/)
+* [Flatpickr](https://flatpickr.js.org/examples/)
+* [TailwindCss](https://tailwindcss.com/docs/animation)
 
 ## Game plan
 
@@ -24,3 +32,14 @@
 
 * Added get data functionality to button. 
 * Get data button retrieves data from firebase and displays it in graph
+
+### Commit 4: Get Data with Time
+
+* Added functionality where we can query from database with start and end time.
+* Made graph for watern level of WSN1
+
+### Commit 5: Page rerouting
+
+TBD.
+
+ 

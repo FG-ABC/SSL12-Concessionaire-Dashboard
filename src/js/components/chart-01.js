@@ -1,7 +1,9 @@
 import ApexCharts from "apexcharts";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs,} from "firebase/firestore"; 
-import { query, orderBy, where } from "firebase/firestore"; 
+import { query, orderBy, where, limit } from "firebase/firestore"; 
+import queryDates from "../index";
+
 
 //Section: Configs
 const firebaseConfig = {
@@ -15,19 +17,16 @@ const firebaseConfig = {
   measurementId: "G-Q4MPYJWKQK"
 };
 
+//Section: Firebase init
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const citiesRef = collection(db, "WSN1"); //Change WSN here
-
-let start_date = new Date(2024, 3, 16, 16, 10, 0); //Date format: (year, month, day, hours, minutes, seconds)
-let end_date = new Date(2025, 3, 16, 16, 11, 0);
-let sensor = "Pressure"
 
 //Section: functions
 async function readFromDatabase(sensor, start_date, end_date){
   var Yvalues = [];
   var Xvalues = [];
-  const querySnapshot = await getDocs(query(citiesRef, orderBy("time", "asc"), where("sensor", "==", sensor), where("time", ">=", start_date), where("time", "<=", end_date)));
+  const querySnapshot = await getDocs(query(citiesRef, orderBy("time", "asc"), where("sensor", "==", sensor), where("time", ">=", start_date), where("time", "<=", end_date), limit(30)));
   querySnapshot.forEach((doc) => {
     const date = new Date(doc.data().time.seconds * 1000);
     const options = {
@@ -42,8 +41,6 @@ async function readFromDatabase(sensor, start_date, end_date){
   });
   return [Xvalues,Yvalues];
 };
-
-
 
 // ===== chartOne
 var chart01 = () => {
@@ -157,6 +154,7 @@ var chart01 = () => {
     },
   };
 
+  // 
   const chartSelector = document.querySelectorAll("#chartOne");
 
   if (chartSelector.length) {
@@ -167,29 +165,41 @@ var chart01 = () => {
     chartOne.render();
     
     const getDataButton = document.getElementById("getDataButton01");
-
     getDataButton.addEventListener('click', async function (e) {
-      const data2 = await readFromDatabase(sensor, start_date, end_date);
-      console.log(data2);
-      chartOne.updateSeries([{
-        data: data2[1]
-      }]);
-
-      chartOne.updateOptions({
-        xaxis: {
-          type: "category",
-          categories: data2[0],
-          labels: {
-            show: false,
-          },
-          axisBorder: {
-            show: false,
-          }
+      const sensor = "Pressure";
+      try{
+        const start_date = queryDates["WSN1a1"][0];
+        const end_date = queryDates["WSN1a2"][0];
+        if (end_date > start_date){
+          const [Xvals, Yvals] = await readFromDatabase(sensor, start_date, end_date);
+          chartOne.updateSeries([{
+            name: "Pressure",
+            data: Yvals
+          }]);
+          chartOne.updateOptions({
+            xaxis: {
+              type: "category",
+              categories: Xvals,
+              labels: {
+                show: false,
+              },
+              axisBorder: {
+                show: false,
+              }
+            }
+          });
+        } else{
+          alert("Start date must happen before end date!")
         }
-      })
-
+      } catch (error){
+        console.log(error);
+        alert("Please input start and end date first!");
+      };
     });
   }
+
+
+
 };
 
 

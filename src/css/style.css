@@ -101,6 +101,27 @@
 .flatpickr-day {
   @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4;
 }
+
+.flatpickr-hour {
+  @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4 dark:focus:!bg-meta-4;
+}
+
+.flatpickr-minute {
+  @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4 dark:focus:!bg-meta-4;
+}
+
+.flatpickr-second{
+  @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4 dark:focus:!bg-meta-4;
+}
+
+.flatpickr-am-pm {
+  @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4 dark:focus:!bg-meta-4;
+}
+
+.flatpickr-time-separator{
+  @apply dark:!text-bodydark dark:hover:!border-meta-4 dark:hover:!bg-meta-4 dark:focus:!bg-meta-4;
+}
+
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
   @apply !top-7 dark:!fill-white dark:!text-white;
