@@ -36,7 +36,7 @@ const generateHTMLPlugins = () =>
   })
 
 module.exports = {
-  watch: true,
+  watch: false,
   mode: 'development',
   entry: './src/js/index.js',
   devServer: {
