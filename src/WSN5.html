@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SSL12 Dashboard | WSN 2</title>
+    <title>SSL12 Dashboard | WSN 5</title>
   </head>
 
   <body
-    x-data="{ page: 'WSN2', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-data="{ page: 'WSN5', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -40,7 +40,7 @@
               class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
             >
               <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                Wireless Sensor Node 2
+                Wireless Sensor Node 5
               </h2>
 
               <nav>
@@ -48,7 +48,7 @@
                   <li>
                     <a class="font-medium" href="index.html">Dashboard /</a>
                   </li>
-                  <li class="font-medium text-primary">WSN 2</li>
+                  <li class="font-medium text-primary">WSN 5</li>
                 </ol>
               </nav>
             </div>
@@ -57,7 +57,7 @@
             <div class="grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
 
               <!-- ====== Chart Three Start -->
-              <include src="./partials/chart-03.html" />
+              <include src="./partials/chart-12.html" />
               <!-- ====== Chart Three End -->
 
               <!-- Time and date 3 -->
@@ -82,7 +82,7 @@
                   </label>
                   <div class="relative">
                     <input 
-                      id="WSN2a1" 
+                      id="WSN5a1" 
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -115,7 +115,7 @@
                   </label>
                   <div class="relative">
                     <input
-                      id="WSN2a2"
+                      id="WSN5a2"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -143,7 +143,7 @@
                 <button
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    id="getDataButton03"
+                    id="getDataButton12"
                     >
                     Get Data
                 </button>
@@ -160,7 +160,7 @@
               <!-- Time and date 3 -->
 
               <!-- ====== Chart Four Start -->
-              <include src="./partials/chart-04.html" />
+              <include src="./partials/chart-13.html" />
               <!-- ====== Chart Four End -->
 
               <!-- Time and date 4 -->
@@ -185,7 +185,7 @@
                   </label>
                   <div class="relative">
                     <input 
-                      id="WSN2b1" 
+                      id="WSN5b1" 
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -218,7 +218,7 @@
                   </label>
                   <div class="relative">
                     <input
-                      id="WSN2b2"
+                      id="WSN5b2"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -246,7 +246,7 @@
                 <button
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    id="getDataButton04"
+                    id="getDataButton13"
                     >
                     Get Data
                 </button>
@@ -263,9 +263,9 @@
               <!-- Time and date 4 -->
 
 
-              <!-- ====== Chart Four Start -->
-              <include src="./partials/chart-05.html" />
-              <!-- ====== Chart Four End -->
+              <!-- ====== Chart Eleven Start -->
+              <include src="./partials/chart-14.html" />
+              <!-- ====== Chart Eleven End -->
 
               <!-- Time and date 4 -->
               <div
@@ -289,7 +289,7 @@
                   </label>
                   <div class="relative">
                     <input 
-                      id="WSN2c1" 
+                      id="WSN5c1" 
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -322,7 +322,7 @@
                   </label>
                   <div class="relative">
                     <input
-                      id="WSN2c2"
+                      id="WSN5c2"
                       class="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                       placeholder="Month Day, Year HH MM SS"
                       data-class="flatpickr-right"
@@ -350,7 +350,7 @@
                 <button
                     href="#"
                     class="inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-                    id="getDataButton05"
+                    id="getDataButton14"
                     >
                     Get Data
                 </button>
@@ -364,7 +364,7 @@
 
               </div>
               </div>
-              <!-- Time and date 5 -->
+              <!-- Time and date 14 -->
 
             </div>
           </div>

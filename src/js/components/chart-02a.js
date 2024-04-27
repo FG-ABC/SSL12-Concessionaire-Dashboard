@@ -20,7 +20,7 @@ const firebaseConfig = {
 //Section: Firebase init
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const citiesRef = collection(db, "WSN1"); //Change WSN here
+const citiesRef = collection(db, "WSN2"); //Change WSN here
 
 //Section: functions
 async function readFromDatabase(sensor, start_date, end_date){
@@ -42,12 +42,11 @@ async function readFromDatabase(sensor, start_date, end_date){
   return [Xvalues,Yvalues];
 };
 
-// ===== chartOne
-var chart01 = () => {
-  const chartOneOptions = {
+// ===== chartThree
+var chart03 = () => { //Change chartname here
+  const chartThreeOptions = {
     series: [
       {
-        name: "Pressure",
         data: [],
       },
     ],
@@ -155,28 +154,30 @@ var chart01 = () => {
   };
 
   // 
-  const chartSelector = document.querySelectorAll("#chartOne");
+  const chartSelector = document.querySelectorAll("#chartThree"); //Change chart ID here
 
   if (chartSelector.length) {
-    const chartOne = new ApexCharts(
-      document.querySelector("#chartOne"),
-      chartOneOptions
+    const chartThree = new ApexCharts( //change chartnumber here
+      document.querySelector("#chartThree"),
+      chartThreeOptions //change options
     );
-    chartOne.render();
+    chartThree.render(); //change chart name
     
-    const getDataButton = document.getElementById("getDataButton01");
+    const getDataButton = document.getElementById("getDataButton03"); //Change button ID here
     getDataButton.addEventListener('click', async function (e) {
-      const sensor = "Pressure";
+      const sensor = "Pressure"; //Change sensor
       try{
-        const start_date = queryDates["WSN1a1"][0];
-        const end_date = queryDates["WSN1a2"][0];
+        const start_date = queryDates["WSN2a1"][0]; //Change date ID
+        const end_date = queryDates["WSN2a2"][0]; //Change date ID
+        console.log(start_date);
+        console.log(end_date);
         if (end_date > start_date){
           const [Xvals, Yvals] = await readFromDatabase(sensor, start_date, end_date);
-          chartOne.updateSeries([{
-            name: "Pressure",
+          chartTwo.updateSeries([{ //Change chart
+            name: "Pressure", //Change type
             data: Yvals
           }]);
-          chartOne.updateOptions({
+          chartThree.updateOptions({ //Change Chart
             xaxis: {
               type: "category",
               categories: Xvals,
@@ -197,10 +198,6 @@ var chart01 = () => {
       };
     });
   }
-
-
-
 };
 
-
-export default chart01;
+export default chart03;
