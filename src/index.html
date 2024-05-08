@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      SSL12 Dashboard | For CoE/ECE 199
-    </title>
+    <title>SSL12 Dashboard | For CoE/ECE 199</title>
   </head>
 
   <body
@@ -17,92 +15,123 @@
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
     <!-- ===== Preloader Start ===== -->
-    <include src="./partials/preloader.html"></include>
+    <!-- <include src="./partials/preloader.html"></include> -->
     <!-- ===== Preloader End ===== -->
 
     <!-- ===== Page Wrapper Start ===== -->
     <div class="flex h-screen overflow-hidden">
-
       <!-- ===== Content Area Start ===== -->
       <div
         class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
       >
-      
         <!-- ===== Header Start ===== -->
         <include src="./partials/header.html" />
         <!-- ===== Header End ===== -->
 
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10 flex flex-col justify-center items-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-8xl text-center">SSL12 Dashboard</h1>
-            <h2 class="text-xl sm:text-2xl lg:text-5xl text-center py-5 xl:mx-24">Design and Implementation of a oneM2M-based Remote Monitoring System for Water
-              Distribution Networks Using Wireless Sensor Nodes</h2>
-            
-            <label class="text-lg sm:text-xl lg:text-3xl w-full text-center lg:mt-24">Pick a wireless sensor node to view:</label>
-            <!-- Buttons -->
-            <div class="flex flex-col lg:flex-row items-center w-full lg:w-10/12 mt-6 gap-y-6 gap-x-3">
-              <a
-              class="w-full lg:w-auto group relative flex items-center gap-2.5 rounded-sm font-medium text-bodydark1 duration-300 ease-in-out"
-              href="WSN1.html"
-              @click="selected = (selected === 'WSN1' ? '':'WSN1')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN1') && (page === 'WSN1') }"
+          <div
+            class="mx-auto flex max-w-screen-2xl flex-col items-center justify-center p-4 md:p-6 lg:flex-row lg:justify-evenly lg:px-10"
+          >
+            <div class="lg:mt-5 lg:w-7/12 lg:self-start">
+              <h1
+                class="text-center text-4xl text-black dark:text-white sm:text-5xl lg:text-8xl"
               >
-              <button
-                  class="w-full lg:w-auto text-xl sm:text-2xl lg:text-5xl inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:scale-105 lg:px-8 xl:px-10">
-                  WSN 1
-              </button>
-              </a>
+                SSL12 Dashboard
+              </h1>
+              <h2
+                class="py-5 text-center text-xl text-black dark:text-white sm:text-2xl lg:text-4xl xl:mx-6"
+              >
+                Design and Implementation of a oneM2M-based Remote Monitoring
+                System for Water Distribution Networks Using Wireless Sensor
+                Nodes
+              </h2>
 
-              <a
-              class="w-full lg:w-auto group relative flex items-center gap-2.5 rounded-sm font-medium text-bodydark1 duration-300 ease-in-out"
-              href="WSN2.html"
-              @click="selected = (selected === 'WSN2' ? '':'WSN2')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN2') && (page === 'WSN2') }"
+              <!-- Authors -->
+              <div
+                class="hidden w-full flex-col items-center justify-center lg:flex"
               >
-              <button
-                  class="w-full lg:w-auto text-xl sm:text-2xl lg:text-5xl inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:scale-105 lg:px-8 xl:px-10">
-                  WSN 2
-              </button>
-              </a>
+                <h3 class="my-6">By</h3>
 
-              <a
-              class="w-full lg:w-auto group relative flex items-center gap-2.5 rounded-sm font-medium text-bodydark1 duration-300 ease-in-out"
-              href="WSN3.html"
-              @click="selected = (selected === 'WSN3' ? '':'WSN3')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN3') && (page === 'WSN3') }"
-              >
-              <button
-                  class="w-full lg:w-auto text-xl sm:text-2xl lg:text-5xl inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:scale-105 lg:px-8 xl:px-10">
-                  WSN 3
-              </button>
-              </a>
+                <div class="flex w-full flex-wrap justify-evenly gap-y-10">
+                  <div class="flex w-5/12 flex-col items-center justify-center">
+                    <h2>Abdul Azis M. Agantal</h2>
+                    <h2>2019-08358</h2>
+                    <h2>BS Electronics Engineering</h2>
+                  </div>
 
-              <a
-              class="w-full lg:w-auto group relative flex items-center gap-2.5 rounded-sm font-medium text-bodydark1 duration-300 ease-in-out"
-              href="WSN4.html"
-              @click="selected = (selected === 'WSN4' ? '':'WSN4')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN4') && (page === 'WSN4') }"
-              >
-              <button
-                  class="w-full lg:w-auto text-xl sm:text-2xl lg:text-5xl inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:scale-105 lg:px-8 xl:px-10">
-                  WSN 4
-              </button>
-              </a>
+                  <div class="flex w-5/12 flex-col items-center justify-center">
+                    <h2>Wynne Angelo B. Arcilla</h2>
+                    <h2>2019-09100</h2>
+                    <h2>BS Electronics Engineering</h2>
+                  </div>
 
-              <a
-              class="w-full lg:w-auto group relative flex items-center gap-2.5 rounded-sm font-medium text-bodydark1 duration-300 ease-in-out"
-              href="WSN5.html"
-              @click="selected = (selected === 'WSN5' ? '':'WSN5')"
-              :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN5') && (page === 'WSN5') }"
-              >
-              <button
-                  class="w-full lg:w-auto text-xl sm:text-2xl lg:text-5xl inline-flex items-center justify-center rounded-md bg-black px-10 py-4 text-center font-medium text-white hover:scale-105 lg:px-8 xl:px-10">
-                  WSN 5
-              </button>
-              </a>
+                  <div class="flex w-5/12 flex-col items-center justify-center">
+                    <h2>Hazel Mae D. Gadiaza</h2>
+                    <h2>2020-01362</h2>
+                    <h2>BS Electronics Engineering</h2>
+                  </div>
+
+                  <div class="flex w-5/12 flex-col items-center justify-center">
+                    <h2>Francis Glenn D. Hernandez</h2>
+                    <h2>2020-06396</h2>
+                    <h2>BS Computer Engineering</h2>
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <!-- Sign In Form -->
+            <div
+              class="w-11/12 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark lg:mt-30 lg:w-3/12"
+            >
+              <div>
+                <div class="p-6.5">
+                  <div class="mb-4.5">
+                    <label
+                      class="mb-3 block text-sm font-medium text-black dark:text-white"
+                    >
+                      Email
+                    </label>
+                    <input
+                      id="signInEmail"
+                      type="email"
+                      placeholder="Enter your email address"
+                      class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-sm font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      class="mb-3 block text-sm font-medium text-black dark:text-white"
+                    >
+                      Password
+                    </label>
+                    <input
+                      id="signInPass"
+                      type="password"
+                      placeholder="Enter password"
+                      autocomplete="new-password"
+                      class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-sm font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    />
+                  </div>
+
+                  <a
+                    class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
+                    href="../WSN1.html"
+                    @click="selected = (selected === 'WSN1' ? '':'WSN1')"
+                    :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN1') && (page === 'WSN1') }"
+                  >
+                    <button
+                      id="signInSubmit"
+                      class="mt-5 flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
+                    >
+                      Sign In
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </main>
         <!-- ===== Main Content End ===== -->

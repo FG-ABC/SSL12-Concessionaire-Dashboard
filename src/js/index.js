@@ -7,7 +7,7 @@ import Alpine from "alpinejs";
 import persist from "@alpinejs/persist";
 import flatpickr from "flatpickr";
 import chart01a from "./components/chart-01a";
-import chart01b from './components/chart-01b';
+import chart01b from "./components/chart-01b";
 import chart02a from "./components/chart-02a";
 import chart02b from "./components/chart-02b";
 import chart02c from "./components/chart-02c";
@@ -20,7 +20,6 @@ import chart04c from "./components/chart-04c";
 import chart05a from "./components/chart-05a";
 import chart05b from "./components/chart-05b";
 import chart05c from "./components/chart-05c";
-
 
 Alpine.plugin(persist);
 window.Alpine = Alpine;
@@ -41,24 +40,22 @@ flatpickr(".form-datepicker", {
     '<svg class="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
   onChange: (selectedDates, dateStr, instance) => {
     // eslint-disable-next-line no-param-reassign
-    var myID = instance.element.id; 
-    queryDates[myID] = (selectedDates);
+    var myID = instance.element.id;
+    queryDates[myID] = selectedDates;
     // console.log(myID);
   },
-
-  });
+});
 
 //Live mode init kasi wala pa
 const liveSelector = document.querySelectorAll(".live");
-liveSelector.forEach((button)=>{
-  button.addEventListener('click', () => {
+liveSelector.forEach((button) => {
+  button.addEventListener("click", () => {
     alert("Live mode not implemented yet, sorry");
-  })
-})
-
+  });
+});
 
 // Document Loaded
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
   chart01a();
   chart01b();
   chart02a();

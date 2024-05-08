@@ -1,5 +1,8 @@
 # CoE199 WebApp GUI
 
+## Screenshot
+
+
 
 ## Links
 * [Tailadmin](https://tailadmin.com/)
@@ -11,3 +14,4 @@
 
 ## Conventions
 sensor names: {Rate, Water Level, Pressure}
+
