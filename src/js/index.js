@@ -70,6 +70,42 @@ window.addEventListener("DOMContentLoaded", () => {
   chart05a();
   chart05b();
   chart05c();
+
+  const signIn = document.getElementById("signInSubmit");
+  const inpEmail = document.getElementById("signInEmail");
+  const inpPass = document.getElementById("signInPass");
+  let emailValue;
+  let passValue;
+  inpEmail.addEventListener("input", () => {
+    emailValue = inpEmail.value;
+  });
+  inpPass.addEventListener("input", () => {
+    passValue = inpPass.value;
+  });
+
+  signIn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let allowed = false;
+    accounts.forEach((item) => {
+      if (emailValue === item.email) {
+        if (passValue === item.password) {
+          allowed = true;
+          window.location.href = "WSN1.html";
+        }
+      }
+    });
+    if (!allowed) {
+      alert("You are not welcome");
+    }
+    return false;
+  });
+  const accounts = [
+    { email: "Regulatory@bogies.com", password: "SSL124DWyn1" },
+    { email: "Concessionaire@bogies.com", password: "SSL124DWyn2" },
+    { email: "Consumer1@bogies.com", password: "SSL124DWyn3" },
+    { email: "Consumer2@bogies.com", password: "SSL124DWyn4" },
+    { email: "1", password: "1" },
+  ];
 });
 
 export default queryDates;

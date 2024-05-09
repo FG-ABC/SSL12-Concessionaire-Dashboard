@@ -85,7 +85,7 @@
             <div
               class="w-11/12 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark lg:mt-30 lg:w-3/12"
             >
-              <div>
+              <form>
                 <div class="p-6.5">
                   <div class="mb-4.5">
                     <label
@@ -116,21 +116,14 @@
                     />
                   </div>
 
-                  <a
-                    class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-                    href="../WSN1.html"
-                    @click="selected = (selected === 'WSN1' ? '':'WSN1')"
-                    :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'WSN1') && (page === 'WSN1') }"
+                  <button
+                    id="signInSubmit"
+                    class="mt-5 flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
                   >
-                    <button
-                      id="signInSubmit"
-                      class="mt-5 flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90"
-                    >
-                      Sign In
-                    </button>
-                  </a>
+                    Sign In
+                  </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </main>
