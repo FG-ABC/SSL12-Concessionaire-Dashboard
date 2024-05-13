@@ -54,8 +54,44 @@ liveSelector.forEach((button) => {
   });
 });
 
-// Document Loaded
-window.addEventListener("DOMContentLoaded", () => {
+//Log out handler
+const logOut = document.getElementById("logOut");
+logOut.addEventListener("click", () => {
+  localStorage.removeItem("account");
+  window.location.href = "index.html";
+});
+
+// Demo accounts
+let accounts = [
+  {
+    email: "Regulatory@bogies.com",
+    password: "SSL124DWyn1",
+    username: "RegulatorPerson",
+    role: "Regulatory",
+  },
+  {
+    email: "Concessionaire@bogies.com",
+    password: "SSL124DWyn2",
+    username: "ConcessionPerson",
+    role: "Concessionaire",
+  },
+  {
+    email: "Consumer1@bogies.com",
+    password: "SSL124DWyn3",
+    username: "Consumer1",
+    role: "Consumer",
+  },
+  {
+    email: "Consumer2@bogies.com",
+    password: "SSL124DWyn4",
+    username: "Consumer2",
+    role: "Consumer",
+  },
+  { email: "1", password: "1", username: "Tester", role: "Testyman" },
+];
+
+//load all graphs
+const loadGraphs = () => {
   chart01a();
   chart01b();
   chart02a();
@@ -70,42 +106,110 @@ window.addEventListener("DOMContentLoaded", () => {
   chart05a();
   chart05b();
   chart05c();
+};
 
-  const signIn = document.getElementById("signInSubmit");
-  const inpEmail = document.getElementById("signInEmail");
-  const inpPass = document.getElementById("signInPass");
-  let emailValue;
-  let passValue;
-  inpEmail.addEventListener("input", () => {
-    emailValue = inpEmail.value;
-  });
-  inpPass.addEventListener("input", () => {
-    passValue = inpPass.value;
-  });
+// Document Loaded
+window.addEventListener("DOMContentLoaded", () => {
+  const account = JSON.parse(localStorage.getItem("account"));
 
-  signIn.addEventListener("click", (e) => {
-    e.preventDefault();
-    let allowed = false;
-    accounts.forEach((item) => {
-      if (emailValue === item.email) {
-        if (passValue === item.password) {
-          allowed = true;
-          window.location.href = "WSN1.html";
-        }
-      }
-    });
-    if (!allowed) {
-      alert("You are not welcome");
+  // There's an account logged in
+  if (account) {
+    loadGraphs();
+    console.log(account);
+    // alert(`An account called ${account.username} is logged in!`);
+    const accountIcon = document.getElementById("accountIcon");
+    const userName = document.getElementById("userName");
+    const userRole = document.getElementById("userRole");
+    const WSN1 = document.getElementById("WSN1");
+    const WSN2 = document.getElementById("WSN2");
+    const WSN3 = document.getElementById("WSN3");
+    const WSN4 = document.getElementById("WSN4");
+    const WSN5 = document.getElementById("WSN5");
+
+    accountIcon.classList.remove("hidden");
+    userRole.innerText += account.role;
+    userName.innerText += account.username;
+
+    switch (account.username) {
+      case "RegulatorPerson":
+        WSN3.classList.add("hidden");
+        WSN4.classList.add("hidden");
+        WSN5.classList.add("hidden");
+        break;
+
+      case "ConcessionPerson":
+        WSN4.classList.add("hidden");
+        WSN5.classList.add("hidden");
+        break;
+
+      case "Consumer1":
+        WSN1.classList.add("hidden");
+        WSN2.classList.add("hidden");
+        WSN3.classList.add("hidden");
+        WSN5.classList.add("hidden");
+        break;
+
+      case "Consumer2":
+        WSN1.classList.add("hidden");
+        WSN2.classList.add("hidden");
+        WSN3.classList.add("hidden");
+        WSN4.classList.add("hidden");
+        break;
+
+      default:
+        break;
     }
-    return false;
-  });
-  const accounts = [
-    { email: "Regulatory@bogies.com", password: "SSL124DWyn1" },
-    { email: "Concessionaire@bogies.com", password: "SSL124DWyn2" },
-    { email: "Consumer1@bogies.com", password: "SSL124DWyn3" },
-    { email: "Consumer2@bogies.com", password: "SSL124DWyn4" },
-    { email: "1", password: "1" },
-  ];
+
+    // There's no account logged in
+  } else {
+    // alert("no account");
+    const signIn = document.getElementById("signInSubmit");
+    const inpEmail = document.getElementById("signInEmail");
+    const inpPass = document.getElementById("signInPass");
+    let emailValue;
+    let passValue;
+
+    inpEmail.addEventListener("input", () => {
+      emailValue = inpEmail.value;
+    });
+    inpPass.addEventListener("input", () => {
+      passValue = inpPass.value;
+    });
+
+    signIn.addEventListener("click", (e) => {
+      e.preventDefault();
+      let allowed = false;
+      accounts.forEach((item) => {
+        if (emailValue === item.email) {
+          if (passValue === item.password) {
+            allowed = true;
+            localStorage.setItem("account", JSON.stringify(item));
+            switch (item.username) {
+              case "RegulatorPerson":
+                window.location.href = "WSN1.html";
+                break;
+              case "ConcessionPerson":
+                window.location.href = "WSN1.html";
+                break;
+              case "Consumer1":
+                window.location.href = "WSN4.html";
+                break;
+              case "Consumer2":
+                window.location.href = "WSN5.html";
+                break;
+              default:
+                window.location.href = "WSN1.html";
+                break;
+            }
+          }
+        }
+      });
+      if (!allowed) {
+        alert("You are not welcome");
+      }
+      return false;
+    });
+  }
 });
 
 export default queryDates;

@@ -1,20 +1,20 @@
 import ApexCharts from "apexcharts";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs,} from "firebase/firestore"; 
-import { query, orderBy, where, limit } from "firebase/firestore"; 
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { query, orderBy, where, limit } from "firebase/firestore";
 import queryDates from "../index";
-
 
 //Section: Configs
 const firebaseConfig = {
   apiKey: "AIzaSyARF38KiuSgGrphoULSKslpgpY_Jz8EFzk",
   authDomain: "coe199-7c644.firebaseapp.com",
-  databaseURL: "https://coe199-7c644-default-rtdb.asia-southeast1.firebasedatabase.app",
+  databaseURL:
+    "https://coe199-7c644-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "coe199-7c644",
   storageBucket: "coe199-7c644.appspot.com",
   messagingSenderId: "689531537139",
   appId: "1:689531537139:web:fd3a37f44bbd964edf5986",
-  measurementId: "G-Q4MPYJWKQK"
+  measurementId: "G-Q4MPYJWKQK",
 };
 
 //Section: Firebase init
@@ -23,10 +23,19 @@ const db = getFirestore(app);
 const citiesRef = collection(db, "WSN1"); //Change WSN here
 
 //Section: functions
-async function readFromDatabase(sensor, start_date, end_date){
+async function readFromDatabase(sensor, start_date, end_date) {
   var Yvalues = [];
   var Xvalues = [];
-  const querySnapshot = await getDocs(query(citiesRef, orderBy("time", "asc"), where("sensor", "==", sensor), where("time", ">=", start_date), where("time", "<=", end_date), limit(30)));
+  const querySnapshot = await getDocs(
+    query(
+      citiesRef,
+      orderBy("time", "asc"),
+      where("sensor", "==", sensor),
+      where("time", ">=", start_date),
+      where("time", "<=", end_date),
+      limit(30)
+    )
+  );
   querySnapshot.forEach((doc) => {
     const date = new Date(doc.data().time.seconds * 1000);
     const options = {
@@ -39,8 +48,8 @@ async function readFromDatabase(sensor, start_date, end_date){
     Xvalues.push(date.toLocaleString("en-US", options));
     Yvalues.push(doc.data().value);
   });
-  return [Xvalues,Yvalues];
-};
+  return [Xvalues, Yvalues];
+}
 
 // ===== chartOne
 var chart01 = () => {
@@ -60,7 +69,7 @@ var chart01 = () => {
     chart: {
       fontFamily: "Satoshi, sans-serif",
       height: 335,
-      type: 'line',
+      type: "line",
       dropShadow: {
         enabled: true,
         color: "#623CEA14",
@@ -164,19 +173,25 @@ var chart01 = () => {
       chartOneOptions
     );
     chartOne.render();
-    
+
     const getDataButton = document.getElementById("getDataButton01");
-    getDataButton.addEventListener('click', async function (e) {
+    getDataButton.addEventListener("click", async function (e) {
       const sensor = "Pressure";
-      try{
+      try {
         const start_date = queryDates["WSN1a1"][0];
         const end_date = queryDates["WSN1a2"][0];
-        if (end_date > start_date){
-          const [Xvals, Yvals] = await readFromDatabase(sensor, start_date, end_date);
-          chartOne.updateSeries([{
-            name: "Pressure",
-            data: Yvals
-          }]);
+        if (end_date > start_date) {
+          const [Xvals, Yvals] = await readFromDatabase(
+            sensor,
+            start_date,
+            end_date
+          );
+          chartOne.updateSeries([
+            {
+              name: "Pressure",
+              data: Yvals,
+            },
+          ]);
           chartOne.updateOptions({
             xaxis: {
               type: "category",
@@ -186,23 +201,18 @@ var chart01 = () => {
               },
               axisBorder: {
                 show: false,
-              }
-            }
+              },
+            },
           });
-        } else{
-          alert("Start date must happen before end date!")
+        } else {
+          alert("Start date must happen before end date!");
         }
-      } catch (error){
+      } catch (error) {
         console.log(error);
         alert("Please input start and end date first!");
-      };
+      }
     });
-
   }
-
-
-
 };
-
 
 export default chart01;
