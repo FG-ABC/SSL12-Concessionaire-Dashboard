@@ -33,7 +33,7 @@ async function readFromDatabase(sensor, start_date, end_date) {
       where("sensor", "==", sensor),
       where("time", ">=", start_date),
       where("time", "<=", end_date),
-      limit(30)
+      limit(1000)
     )
   );
   querySnapshot.forEach((doc) => {
@@ -48,6 +48,37 @@ async function readFromDatabase(sensor, start_date, end_date) {
     Xvalues.push(date.toLocaleString("en-US", options));
     Yvalues.push(doc.data().value);
   });
+  return [Xvalues, Yvalues];
+}
+
+async function liveMode(sensor, start_date) {
+  Xvalues = [];
+  Yvalues = [];
+
+  const querySnapshot = await getDocs(
+    query(
+      citiesRef,
+      orderBy("time", "desc"),
+      where("sensor", "==", sensor),
+      where("time", ">=", start_date),
+      limit(3)
+    )
+  );
+  querySnapshot.forEach((doc) => {
+    const date = new Date(doc.data().time.seconds * 1000);
+    const options = {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    };
+    Yvalues.push(date.toLocaleString("en-US", options));
+    Xvalues.push(doc.data().value);
+  });
+
+  Xvalues.reverse();
+  Yvalues.reverse();
   return [Xvalues, Yvalues];
 }
 
@@ -159,7 +190,7 @@ var chart01 = () => {
         },
       },
       min: 0,
-      max: 10,
+      max: 30,
     },
   };
 
@@ -174,6 +205,7 @@ var chart01 = () => {
     );
     chartOne.render();
 
+    //Get Data Button 1
     const getDataButton = document.getElementById("getDataButton01");
     getDataButton.addEventListener("click", async function (e) {
       const sensor = "Pressure";
@@ -211,6 +243,49 @@ var chart01 = () => {
         console.log(error);
         alert("Please input start and end date first!");
       }
+    });
+
+    //Live Mode Handler
+    const liveOn = document.getElementById("1aLiveOn");
+    const liveOff = document.getElementById("1aLiveOff");
+    liveOff.addEventListener("click", async () => {
+      liveOff.classList.remove("inline-flex");
+      liveOff.classList.add("hidden");
+      liveOn.classList.remove("hidden");
+      liveOn.classList.add("inline-flex");
+
+      alert("bot");
+      const sensor = "Pressure";
+      const startDate = new Date();
+      setInterval(async () => {
+        // alert("tick");
+        const [Xvals, Yvals] = await liveMode(sensor, startDate);
+        chartOne.updateSeries([
+          {
+            name: "Pressure",
+            data: Yvals,
+          },
+        ]);
+        chartOne.updateOptions({
+          xaxis: {
+            type: "category",
+            categories: Xvals,
+            labels: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+          },
+        });
+      }, 3000);
+    });
+
+    liveOn.addEventListener("click", () => {
+      liveOff.classList.add("inline-flex");
+      liveOff.classList.remove("hidden");
+      liveOn.classList.add("hidden");
+      liveOn.classList.remove("inline-flex");
     });
   }
 };

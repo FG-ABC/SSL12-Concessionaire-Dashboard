@@ -47,12 +47,12 @@ flatpickr(".form-datepicker", {
 });
 
 //Live mode init kasi wala pa
-const liveSelector = document.querySelectorAll(".live");
-liveSelector.forEach((button) => {
-  button.addEventListener("click", () => {
-    alert("Live mode not implemented yet, sorry");
-  });
-});
+// const liveSelector = document.querySelectorAll(".live");
+// liveSelector.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     alert("Live mode not implemented yet, sorry");
+//   });
+// });
 
 //Log out handler
 const logOut = document.getElementById("logOut");
@@ -63,12 +63,6 @@ logOut.addEventListener("click", () => {
 
 // Demo accounts
 let accounts = [
-  {
-    email: "Regulatory@bogies.com",
-    password: "SSL124DWyn1",
-    username: "RegulatorPerson",
-    role: "Regulatory",
-  },
   {
     email: "Concessionaire@bogies.com",
     password: "SSL124DWyn2",
