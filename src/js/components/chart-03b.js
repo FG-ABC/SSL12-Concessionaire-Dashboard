@@ -32,8 +32,7 @@ async function readFromDatabase(sensor, start_date, end_date) {
       orderBy("time", "asc"),
       where("sensor", "==", sensor),
       where("time", ">=", start_date),
-      where("time", "<=", end_date),
-      limit(30)
+      where("time", "<=", end_date)
     )
   );
   querySnapshot.forEach((doc) => {
