@@ -254,7 +254,6 @@ var chart01 = () => {
       liveOn.classList.remove("hidden");
       liveOn.classList.add("inline-flex");
 
-      alert("bot");
       const sensor = "Pressure";
       const startDate = new Date();
       setInterval(async () => {

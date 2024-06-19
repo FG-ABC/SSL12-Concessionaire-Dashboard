@@ -187,7 +187,7 @@ var chart03 = () => {
             start_date,
             end_date
           );
-          chartTwo.updateSeries([
+          chartThree.updateSeries([
             {
               //Change chart
               name: "Pressure", //Change type
