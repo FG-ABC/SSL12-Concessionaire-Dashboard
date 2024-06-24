@@ -51,6 +51,9 @@ async function readFromDatabase(sensor, start_date, end_date) {
   return [Xvalues, Yvalues];
 }
 
+let Xvalues;
+let Yvalues;
+
 async function liveMode(sensor, start_date) {
   Xvalues = [];
   Yvalues = [];
@@ -61,7 +64,7 @@ async function liveMode(sensor, start_date) {
       orderBy("time", "desc"),
       where("sensor", "==", sensor),
       where("time", ">=", start_date),
-      limit(3)
+      limit(10)
     )
   );
   querySnapshot.forEach((doc) => {
@@ -79,6 +82,7 @@ async function liveMode(sensor, start_date) {
 
   Xvalues.reverse();
   Yvalues.reverse();
+  console.log(Xvalues, Yvalues);
   return [Xvalues, Yvalues];
 }
 
@@ -246,26 +250,29 @@ var chart01 = () => {
     });
 
     //Live Mode Handler
-    const liveOn = document.getElementById("1aLiveOn");
-    const liveOff = document.getElementById("1aLiveOff");
+    let chartOneInterval;
+    const liveOn = document.getElementById("1aLiveOn"); //Change button ID
+    const liveOff = document.getElementById("1aLiveOff"); //Change button ID
     liveOff.addEventListener("click", async () => {
       liveOff.classList.remove("inline-flex");
       liveOff.classList.add("hidden");
       liveOn.classList.remove("hidden");
       liveOn.classList.add("inline-flex");
 
-      const sensor = "Pressure";
+      const sensor = "Pressure"; //Change sensor
       const startDate = new Date();
-      setInterval(async () => {
-        // alert("tick");
+      chartOneInterval = setInterval(async () => {
         const [Xvals, Yvals] = await liveMode(sensor, startDate);
+        console.log("read");
         chartOne.updateSeries([
+          //Change chart
           {
-            name: "Pressure",
+            name: "Pressure", //Change type
             data: Yvals,
           },
         ]);
         chartOne.updateOptions({
+          //Change Chart
           xaxis: {
             type: "category",
             categories: Xvals,
@@ -285,6 +292,7 @@ var chart01 = () => {
       liveOff.classList.remove("hidden");
       liveOn.classList.add("hidden");
       liveOn.classList.remove("inline-flex");
+      clearInterval(chartOneInterval);
     });
   }
 };
